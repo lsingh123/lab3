@@ -179,7 +179,11 @@ let ids (enrollments : enrollment list) : int list =
   ......................................................................*)
 
 let verify (enrollments : enrollment list) : bool =
-  failwith "verify not implemented" ;;
+  List.for_all (fun student ->
+    List.for_all (fun x -> x.name == student.name)
+    (List.filter (fun x -> x.id == student.id) enrollments))
+  enrollments ;;
+
 
 (*======================================================================
   Part 3: Polymorphism
