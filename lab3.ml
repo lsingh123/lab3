@@ -146,11 +146,12 @@ let college =
     [{name = "Sandy"; id = 993855891; course = "ls1b"};
      {name = "Sandy"; id = 993855891; course = "cs51"}]
    ......................................................................*)
+open List ;;
 
 let transcript (enrollments : enrollment list)
     (student : int)
   : enrollment list =
-  failwith "transcript not implemented" ;;
+  List.filter (fun x -> x.id == student) enrollments ;;
 
 (*......................................................................
   Exercise 8: Define a function called ids that takes an enrollment
@@ -238,6 +239,10 @@ let rec partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
   | [] -> ([], [])
   | hd :: tl -> let (tr, fl) = partition f tl in
     if f hd then (hd :: tr, fl) else (tr, hd :: fl) ;;
+
+
+let partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
+  (filter lst f, filter lst !f) ;;
 
 
 (*......................................................................
