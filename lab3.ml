@@ -69,8 +69,8 @@ let add_point_recd (p1 : point_recd) (p2 : point_recd) : point_recd =
    product for points encoded as the point_pair type.
    ......................................................................*)
 
-let dot_product_pair (p1 : point_pair) (p2 : point_pair) : int =
-  failwith "dot_product_pair not implemented" ;;
+let dot_product_pair ((x1, y1) : point_pair) ((x2, y2) : point_pair) : int =
+  x1 * x2 + y1 * y2 ;;
 
 (*......................................................................
   Exercise 4: Write a function dot_product_recd to compute the dot
