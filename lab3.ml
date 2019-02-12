@@ -165,8 +165,8 @@ let transcript (enrollments : enrollment list)
     - : int list = [482958285; 603858772; 993855891]
   ......................................................................*)
 
-let ids (enrollments: enrollment list) : int list =
-  failwith "ids not implemented" ;;
+let ids (enrollments : enrollment list) : int list =
+  List.sort_uniq compare (List.map (fun x -> x.id) enrollments) ;;
 
 (*......................................................................
   Exercise 9: Define a function called verify that determines whether all
