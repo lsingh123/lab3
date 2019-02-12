@@ -269,15 +269,22 @@ let rec partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
   What is the most general (polymorphic) type for its first argument
   (the function to be applied)?
 
+  'a -> 'b
+
   What is the most general type for its second argument (the argument to
   apply it to)?
 
+  'a
+
   What is the type of its result?
+
+  'b
 
   Given the above, what should the type of the function "apply" be?
 
+  ('a -> 'b) -> 'a -> 'b
   Now write the function.
   ......................................................................*)
 
-let apply =
-  fun _ -> failwith "apply not implemented" ;;
+let apply (f : 'a -> 'b) (x : 'a) : 'b =
+  f x ;;
