@@ -228,11 +228,17 @@ let rec zip (x : 'a list) (y : 'b list) : ('a * 'b) list =
   What is the type of the partition function, keeping in mind that it
   should be as polymorphic as possible?
 
+  ('a -> bool) -> 'a list -> 'a list * 'a list
+
   Now write the function.
   ......................................................................*)
 
-let partition =
-  fun _ -> failwith "partition not implemented" ;;
+let rec partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
+  match lst with
+  | [] -> ([], [])
+  | hd :: tl -> let (tr, fl) = partition f tl in
+    if f hd then (hd :: tr, fl) else (tr, hd :: fl) ;;
+
 
 (*......................................................................
   Exercise 12: We can think of function application itself as a
