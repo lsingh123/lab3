@@ -78,7 +78,7 @@ let dot_product_pair ((x1, y1) : point_pair) ((x2, y2) : point_pair) : int =
   ......................................................................*)
 
 let dot_product_recd (p1 : point_recd) (p2 : point_recd) : int =
-  failwith "dot_product_recd not implemented" ;;
+  p1.x * p2.x + p1.y * p2.y ;;
 
 (* Converting between the pair and record representations of points
 
