@@ -69,7 +69,7 @@ let add_point_recd (p1 : point_recd) (p2 : point_recd) : point_recd =
    product for points encoded as the point_pair type.
    ......................................................................*)
 
-let dot_product_pair ((x1, y1) : point_pair) ((x2, y2) : point_pair) : int =
+let dot_product_pair (x1, y1 : point_pair) (x2, y2 : point_pair) : int =
   x1 * x2 + y1 * y2 ;;
 
 (*......................................................................
@@ -92,8 +92,8 @@ let dot_product_recd (p1 : point_recd) (p2 : point_recd) : int =
    point_pair to a point_recd.
    ......................................................................*)
 
-let point_pair_to_recd =
-  fun _ -> failwith "point_pair_to_recd not implemented" ;;
+let point_pair_to_recd (x, y : point_pair) : point_recd=
+  {x = x; y = y} ;;
 
 (*......................................................................
   Exercise 6: Write a function point_recd_to_pair that converts a
