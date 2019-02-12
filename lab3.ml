@@ -239,15 +239,7 @@ let rec zip (x : 'a list) (y : 'b list) : ('a * 'b) list =
   ......................................................................*)
 
 let rec partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
-  match lst with
-  | [] -> ([], [])
-  | hd :: tl -> let (tr, fl) = partition f tl in
-    if f hd then (hd :: tr, fl) else (tr, hd :: fl) ;;
-
-
-let partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
-  (filter lst f, filter lst !f) ;;
-
+  (List.filter f lst, List.filter (fun x -> not (f x)) lst) ;;
 
 (*......................................................................
   Exercise 12: We can think of function application itself as a
