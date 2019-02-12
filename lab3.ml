@@ -201,8 +201,10 @@ let verify (enrollments : enrollment list) : bool =
   are of different lengths.)
   ......................................................................*)
 
-let zip =
-  fun _ -> failwith "zip not implemented" ;;
+let rec zip (x : 'a list) (y : 'b list) : ('a * 'b) list =
+  match x, y with
+  | [], [] -> []
+  | xhd :: xtl, yhd :: ytl -> (xhd, yhd) :: (zip xtl ytl) ;;
 
 (*......................................................................
   Exercise 11: Partitioning a list -- Given a boolean function, say
