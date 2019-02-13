@@ -240,7 +240,6 @@ let rec zip (x : 'a list) (y : 'b list) : ('a * 'b) list =
 
 let rec partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
   (List.filter f lst, List.filter (fun x -> not (f x)) lst) ;;
-
 (*......................................................................
   Exercise 12: We can think of function application itself as a
   higher-order function (!). It takes two arguments -- a function and
