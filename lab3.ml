@@ -93,15 +93,15 @@ let dot_product_recd (p1 : point_recd) (p2 : point_recd) : int =
    ......................................................................*)
 
 let point_pair_to_recd (x, y : point_pair) : point_recd =
-  {x = x; y = y} ;;
+  {x; y} ;;
 
 (*......................................................................
   Exercise 6: Write a function point_recd_to_pair that converts a
   point_recd to a point_pair.
   ......................................................................*)
 
-let point_recd_to_pair (recd : point_recd) : point_pair =
-  (recd.x, recd.y) ;;
+let point_recd_to_pair ({x; y} : point_recd) : point_pair =
+  x, y ;;
 
 (*======================================================================
   Part 2: A simple database of records
@@ -146,12 +146,11 @@ let college =
     [{name = "Sandy"; id = 993855891; course = "ls1b"};
      {name = "Sandy"; id = 993855891; course = "cs51"}]
    ......................................................................*)
-open List ;;
 
 let transcript (enrollments : enrollment list)
     (student : int)
   : enrollment list =
-  List.filter (fun x -> x.id == student) enrollments ;;
+  List.filter (fun { id; _ } -> id == student) enrollments ;;
 
 (*......................................................................
   Exercise 8: Define a function called ids that takes an enrollment
@@ -286,5 +285,5 @@ let rec partition (f: 'a -> bool) (lst : 'a list) : ('a list * 'a list) =
   Now write the function.
   ......................................................................*)
 
-let apply (f : 'a -> 'b) (x : 'a) : 'b =
-  f x ;;
+let apply (f : 'a -> 'b) (arg : 'a) : 'b =
+  f arg ;;
