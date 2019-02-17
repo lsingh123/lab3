@@ -176,13 +176,14 @@ let ids (enrollments : enrollment list) : int list =
   # verify college ;;
   - : bool = false
   ......................................................................*)
+let names (enrollments : enrollment list) : string list =
+  List.sort_uniq (compare) (List.map (fun { name; _ } -> name) enrollments) ;;
 
 let verify (enrollments : enrollment list) : bool =
-  List.for_all (fun student ->
-    List.for_all (fun x -> x.name == student.name)
-    (List.filter (fun x -> x.id == student.id) enrollments))
-  enrollments ;;
-
+  List.for_all (fun lst -> List.length lst = 1)
+               (List.map
+                  (fun student -> names (transcript enrollments student))
+                  (ids enrollments)) ;;
 
 (*======================================================================
   Part 3: Polymorphism
